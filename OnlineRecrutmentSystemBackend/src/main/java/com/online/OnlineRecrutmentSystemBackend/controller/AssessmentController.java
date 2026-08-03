@@ -19,7 +19,7 @@ import com.online.OnlineRecrutmentSystemBackend.model.Assessment;
 import com.online.OnlineRecrutmentSystemBackend.service.AssessmentService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8000")
+@CrossOrigin(origins = "http://localhost:7000")
 @RequestMapping("/assessment")
 public class AssessmentController {
 	

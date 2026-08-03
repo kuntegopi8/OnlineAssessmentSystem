@@ -9,7 +9,7 @@ import com.online.OnlineRecrutmentSystemBackend.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:8000")
+@CrossOrigin(origins = "http://localhost:7000")
 public class AuthController {
 
     @Autowired

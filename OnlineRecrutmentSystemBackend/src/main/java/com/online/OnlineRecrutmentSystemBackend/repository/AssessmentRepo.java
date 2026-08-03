@@ -21,7 +21,7 @@ public class AssessmentRepo {
     JdbcTemplate template;
     public boolean isRegisterAssessment(Assessment a)
     {
-    	int val=template.update("insert into assessment(Assessment_Name,Domain,Duration,Total_Questions,Total_Marks,Eligibility_Criteria)values(?,?,?,?,?,?)",new PreparedStatementSetter() {
+    	int val=template.update("insert into assessment(name,Domain,Duration,Total_Questions,Total_Marks,Eligibility_Criteria)values(?,?,?,?,?,?)",new PreparedStatementSetter() {
     		public void setValues(PreparedStatement ps)throws SQLException
     		{
     			ps.setString(1, a.getAssessmentName());
@@ -37,7 +37,7 @@ public class AssessmentRepo {
     }
     public boolean isUpdateAssessment(int id,Assessment a)
     {
-    	int val=template.update("update assessment set Assessment_Name=?,Domain=?,Duration=?,Total_Questions=?,Total_Marks=?,Eligibility_Criteria=? where Assessment_Id=?",new PreparedStatementSetter() {
+    	int val=template.update("update assessment set name=?,Domain=?,Duration=?,Total_Questions=?,Total_Marks=?,Eligibility_Criteria=? where Assessment_Id=?",new PreparedStatementSetter() {
     		public void setValues(PreparedStatement ps)throws SQLException
     		{
     			ps.setString(1, a.getAssessmentName());
