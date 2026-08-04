@@ -111,6 +111,7 @@ type="text"
 class="form-control"
 name="full_name"
 placeholder="Enter Full Name"
+id="uname"
 required>
 
 </div>
@@ -120,6 +121,7 @@ required>
 <label class="form-label">Email Address</label>
 
 <input
+id="email"
 type="email"
 class="form-control"
 name="email"
@@ -133,6 +135,7 @@ required>
 <label class="form-label">Password</label>
 
 <input
+id="pass"
 type="password"
 class="form-control"
 name="password"
@@ -146,6 +149,7 @@ required>
 <label class="form-label">Mobile Number</label>
 
 <input
+id="mobNo"
 type="text"
 class="form-control"
 name="mobile"
@@ -155,7 +159,7 @@ required>
 
 </div>
 
-<div class="col-md-12 mb-3">
+<div class="col-md-12 mb-3" id="gender">
 
 <label class="form-label d-block">Gender</label>
 
@@ -166,6 +170,7 @@ class="form-check-input"
 type="radio"
 name="gender"
 value="Male"
+
 required>
 
 <label class="form-check-label">Male</label>
@@ -203,6 +208,7 @@ value="Other">
 <label class="form-label">Qualification</label>
 
 <input
+id="qulification"
 type="text"
 class="form-control"
 name="qualification"
@@ -215,6 +221,7 @@ placeholder="Example: B.E, B.Tech, MCA">
 <label class="form-label">College Name</label>
 
 <input
+id="collage"
 type="text"
 class="form-control"
 name="college_name"
@@ -227,6 +234,7 @@ placeholder="Enter College Name">
 <label class="form-label">CGPA</label>
 
 <input
+id="cgpa"
 type="number"
 step="0.01"
 min="0"
@@ -243,7 +251,7 @@ placeholder="Enter CGPA">
 
 <button type="submit" class="btn btn-register">
 
-<i class="fas fa-user-check"></i>
+<i class="fas fa-user-check" onclick="registerStudent"></i>
 
 Register
 
@@ -272,6 +280,6 @@ Login Here
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="../js/Register.js"></script>
 </body>
 </html>
