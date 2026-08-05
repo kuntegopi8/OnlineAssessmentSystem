@@ -1,6 +1,7 @@
 package com.online.OnlineRecrutmentSystemBackend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,4 +60,21 @@ public class AssessmentController {
     	   return new ResponseEntity(li,HttpStatus.OK);
     	return new ResponseEntity(li,HttpStatus.OK);
     }
+    
+    //get assissment by domain'
+    @GetMapping("/student/{sid}")
+    public ResponseEntity<List<Assessment>> getAssessByStudentIntrest(@PathVariable("sid") int sid)
+    {
+    		Optional<List<Assessment>> list = as.getAssessmentBySid(sid);
+    		 if (list.isPresent()) {
+ 		        return ResponseEntity.ok(list.get());
+ 		    } else {
+ 		        return ResponseEntity.notFound().build();
+ 		    }
+    	
+    	
+    }
+  
+  
+    
 }
