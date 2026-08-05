@@ -110,6 +110,7 @@ Create your account to access assessments and job opportunities.
 type="text"
 class="form-control"
 name="full_name"
+id="full_name"
 placeholder="Enter Full Name"
 required>
 
@@ -123,6 +124,7 @@ required>
 type="email"
 class="form-control"
 name="email"
+id="email"
 placeholder="Enter Email Address"
 required>
 
@@ -136,6 +138,7 @@ required>
 type="password"
 class="form-control"
 name="password"
+id="password"
 placeholder="Enter Password"
 required>
 
@@ -149,6 +152,7 @@ required>
 type="text"
 class="form-control"
 name="mobile"
+id="mobile"
 maxlength="10"
 placeholder="Enter Mobile Number"
 required>
@@ -165,6 +169,7 @@ required>
 class="form-check-input"
 type="radio"
 name="gender"
+id="male"
 value="Male"
 required>
 
@@ -178,6 +183,7 @@ required>
 class="form-check-input"
 type="radio"
 name="gender"
+id="female"
 value="Female">
 
 <label class="form-check-label">Female</label>
@@ -190,6 +196,7 @@ value="Female">
 class="form-check-input"
 type="radio"
 name="gender"
+id="other"
 value="Other">
 
 <label class="form-check-label">Other</label>
@@ -206,6 +213,7 @@ value="Other">
 type="text"
 class="form-control"
 name="qualification"
+id="qualification"
 placeholder="Example: B.E, B.Tech, MCA">
 
 </div>
@@ -218,6 +226,7 @@ placeholder="Example: B.E, B.Tech, MCA">
 type="text"
 class="form-control"
 name="college_name"
+id="college_name"
 placeholder="Enter College Name">
 
 </div>
@@ -232,8 +241,21 @@ step="0.01"
 min="0"
 max="10"
 class="form-control"
+id="cgpa"
 name="cgpa"
 placeholder="Enter CGPA">
+
+</div>
+<div class="col-md-6 mb-3">
+
+<label class="form-label">Interest</label>
+
+<input
+type="text"
+class="form-control"
+name="interest"
+id="interest"
+placeholder="java,python,ful Stack">
 
 </div>
 
@@ -241,7 +263,7 @@ placeholder="Enter CGPA">
 
 <div class="d-grid mt-3">
 
-<button type="submit" class="btn btn-register">
+<button type="button" class="btn btn-register" onclick="registerUser()">
 
 <i class="fas fa-user-check"></i>
 
@@ -271,7 +293,7 @@ Login Here
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/userRegistration.js"></script>
 
 </body>
 </html>

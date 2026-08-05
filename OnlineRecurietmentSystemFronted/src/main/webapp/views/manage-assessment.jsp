@@ -247,7 +247,7 @@ Active
 
 </div>
 
-<script src="../js/login.js"></script>
+<script src="../js/Assessment.js"></script>
 
 </body>
 </html>
