@@ -2,15 +2,27 @@ package com.online.OnlineRecrutmentSystemBackend.model;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Question {
 
+	private int id;
     private int assessment_ID;
+    
+    @JsonProperty("Question_Text")
     private String Question_Text;
+    
+    @JsonProperty("Option_A")
     private String Option_A;
+    @JsonProperty("Option_B")
     private String Option_B;
+    @JsonProperty("Option_C")
     private String Option_C;
+    @JsonProperty("Option_D")
     private String Option_D;
+    @JsonProperty("Correct_Answer")
     private String Correct_Answer;
+    @JsonProperty("Marks")
     private int Marks;
 
     public int getAssessment_ID() {
@@ -25,8 +37,8 @@ public class Question {
         return Question_Text;
     }
 
-    public void setQuestion_Text(String question_Text) {
-        Question_Text = question_Text;
+    public void setQuestion_Text(String Question_Text) {
+        this.Question_Text= Question_Text;
     }
 
     public String getOption_A() {
@@ -76,4 +88,12 @@ public class Question {
     public void setMarks(int marks) {
         Marks = marks;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

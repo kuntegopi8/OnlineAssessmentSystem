@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -38,7 +37,7 @@ public class UserRepository {
 
 			                User u = new User();
 
-			                u.setUserId(rs.getInt("user_id"));
+			                u.setUserId(rs.getInt("id"));
 			                u.setFullName(rs.getString("full_name"));
 			                u.setEmail(rs.getString("email"));
 			                u.setPassword(rs.getString("password"));

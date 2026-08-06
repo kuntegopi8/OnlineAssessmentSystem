@@ -24,7 +24,7 @@ function login() {
         if (data.role === "ADMIN") {
             window.location.href = "admin_dashboard.jsp";
         } else if (data.role === "STUDENT") {
-            window.location.href = "student_dashboard.jsp";
+            window.location.href = "Student_DashBoard.jsp";
         }
     })
     .catch(error => {
@@ -33,7 +33,6 @@ function login() {
         alert("Invalid Email or Password");
 
     });
-
 }
 
 function addAssessment()
@@ -70,4 +69,3 @@ function addAssessment()
 		    alert("Error while saving assessment.");
 		});
 }
-

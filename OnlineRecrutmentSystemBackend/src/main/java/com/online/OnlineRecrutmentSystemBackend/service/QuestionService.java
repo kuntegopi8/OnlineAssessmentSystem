@@ -18,14 +18,18 @@ public class QuestionService {
 		return questionRepo.isAddQuestion(q);
 	}
 	
+	public List<Question> Quetions(){
+		return questionRepo.Quetions();
+	}
+	
 	public boolean isUpdateQuestion(Question q,int id)
 	{
 		
 		return questionRepo.isUpdateQuestion(q, id);
 	}
-	public List<Question> getAllQuestion(int id)
+	public List<Question> quetionByAssesmnet(int id)
 	{
-		return questionRepo.getAllQuestion(id);
+		return questionRepo.quetionByAssesmnet(id);
 	}
 	public boolean isDelete(int id)
 	{

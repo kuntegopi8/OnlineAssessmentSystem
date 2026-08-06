@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -16,6 +17,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 
 <style>
 
@@ -77,11 +79,15 @@ body{
 
 </head>
 
+
 <body>
+
 
 <div class="container register-section">
 
+
 <div class="card register-card">
+
 
 <div class="card-header">
 
@@ -96,72 +102,102 @@ Create your account to access assessments and job opportunities.
 
 </div>
 
+
+
 <div class="card-body p-4">
 
-<form action="register" method="post">
+
+<form>
+
 
 <div class="row">
 
+
+<!-- Name -->
 <div class="col-md-6 mb-3">
 
-<label class="form-label">Full Name</label>
+<label class="form-label">
+Full Name
+</label>
 
 <input
 type="text"
 class="form-control"
-name="full_name"
+id="full_name"
 placeholder="Enter Full Name"
-id="uname"
 required>
 
 </div>
 
+
+
+<!-- Email -->
 <div class="col-md-6 mb-3">
 
-<label class="form-label">Email Address</label>
+<label class="form-label">
+Email Address
+</label>
 
 <input
-id="email"
 type="email"
 class="form-control"
-name="email"
+id="email"
 placeholder="Enter Email Address"
 required>
 
 </div>
 
+
+
+
+<!-- Password -->
 <div class="col-md-6 mb-3">
 
-<label class="form-label">Password</label>
+<label class="form-label">
+Password
+</label>
 
 <input
-id="pass"
 type="password"
 class="form-control"
-name="password"
+id="password"
 placeholder="Enter Password"
 required>
 
 </div>
 
+
+
+
+<!-- Mobile -->
 <div class="col-md-6 mb-3">
 
-<label class="form-label">Mobile Number</label>
+<label class="form-label">
+Mobile Number
+</label>
 
 <input
-id="mobNo"
 type="text"
 class="form-control"
-name="mobile"
+id="mobile"
 maxlength="10"
 placeholder="Enter Mobile Number"
 required>
 
 </div>
 
-<div class="col-md-12 mb-3" id="gender">
 
-<label class="form-label d-block">Gender</label>
+
+
+<!-- Gender -->
+
+<div class="col-md-12 mb-3">
+
+
+<label class="form-label d-block">
+Gender
+</label>
+
 
 <div class="form-check form-check-inline">
 
@@ -169,25 +205,34 @@ required>
 class="form-check-input"
 type="radio"
 name="gender"
-value="Male"
+id="male"
+value="Male">
 
-required>
-
-<label class="form-check-label">Male</label>
+<label class="form-check-label">
+Male
+</label>
 
 </div>
 
+
+
 <div class="form-check form-check-inline">
 
 <input
 class="form-check-input"
 type="radio"
 name="gender"
+id="female"
 value="Female">
 
-<label class="form-check-label">Female</label>
+<label class="form-check-label">
+Female
+</label>
 
 </div>
+
+
+
 
 <div class="form-check form-check-inline">
 
@@ -195,71 +240,150 @@ value="Female">
 class="form-check-input"
 type="radio"
 name="gender"
+id="other"
 value="Other">
 
-<label class="form-check-label">Other</label>
+<label class="form-check-label">
+Other
+</label>
 
 </div>
 
+
 </div>
+
+
+
+
+
+<!-- Qualification -->
 
 <div class="col-md-6 mb-3">
 
-<label class="form-label">Qualification</label>
+<label class="form-label">
+Qualification
+</label>
+
 
 <input
-id="qulification"
 type="text"
 class="form-control"
-name="qualification"
+id="qualification"
 placeholder="Example: B.E, B.Tech, MCA">
 
+
 </div>
+
+
+
+
+
+
+<!-- College -->
 
 <div class="col-md-6 mb-3">
 
-<label class="form-label">College Name</label>
+<label class="form-label">
+College Name
+</label>
+
 
 <input
-id="collage"
 type="text"
 class="form-control"
-name="college_name"
+id="college_name"
 placeholder="Enter College Name">
+
 
 </div>
 
+
+
+
+
+
+
+<!-- CGPA -->
+
 <div class="col-md-6 mb-3">
 
-<label class="form-label">CGPA</label>
+
+<label class="form-label">
+CGPA
+</label>
+
 
 <input
-id="cgpa"
 type="number"
 step="0.01"
 min="0"
 max="10"
 class="form-control"
-name="cgpa"
+id="cgpa"
 placeholder="Enter CGPA">
 
-</div>
 
 </div>
+
+
+
+
+
+
+
+<!-- Interest -->
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+Interest
+</label>
+
+
+<input
+type="text"
+class="form-control"
+id="interest"
+placeholder="Java, Python, Full Stack">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
 
 <div class="d-grid mt-3">
 
-<button type="submit" class="btn btn-register">
 
-<i class="fas fa-user-check" onclick="registerStudent"></i>
+<button 
+type="button"
+class="btn btn-register"
+onclick="registerStudent()">
+
+
+<i class="fas fa-user-check"></i>
 
 Register
 
+
 </button>
+
 
 </div>
 
+
+
+
+
 <div class="text-center mt-4">
+
 
 Already have an account?
 
@@ -269,17 +393,31 @@ Login Here
 
 </a>
 
+
 </div>
+
+
 
 </form>
 
-</div>
 
 </div>
 
+
 </div>
 
+
+</div>
+
+
+
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
 <script src="../js/Register.js"></script>
+
+
 </body>
+
 </html>

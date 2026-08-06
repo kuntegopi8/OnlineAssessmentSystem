@@ -19,7 +19,7 @@ import com.online.OnlineRecrutmentSystemBackend.model.Assessment;
 import com.online.OnlineRecrutmentSystemBackend.service.AssessmentService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:7000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/assessment")
 public class AssessmentController {
 	
@@ -34,6 +34,7 @@ public class AssessmentController {
     	}
     	return new ResponseEntity("Failed to Add Assessment",HttpStatus.BAD_REQUEST);
     }
+    
     @PutMapping("/updateAssessment/{id}")
     public ResponseEntity<String> isUpdate(@PathVariable int id,@RequestBody Assessment a)
     {
@@ -43,6 +44,7 @@ public class AssessmentController {
     	}
     	return new ResponseEntity("Failed to Update Assessment",HttpStatus.BAD_REQUEST);
     }
+    
     @DeleteMapping("/deleteAssessment/{id}")
     public ResponseEntity<String> isDeleteAssessment(@PathVariable int id)
     {
@@ -52,6 +54,7 @@ public class AssessmentController {
     	}
     	return new ResponseEntity("Failed to Delete Assessment",HttpStatus.BAD_REQUEST);
     }
+    
     @GetMapping("/allAssessment")
     public ResponseEntity<List> getAllAssessment()
     {   List<Assessment> li=as.getAllAssessment();
