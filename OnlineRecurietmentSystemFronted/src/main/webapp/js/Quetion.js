@@ -74,7 +74,7 @@ async function getAssesmentName() {
 	                <td>
 
 					   <button class="btn btn-warning btn-sm">
-						<a href="update_Quetion.jsp?id=${question.id}"> 
+					   <a href="update_Quetion.jsp?id=${question.id}&assessmentId=${question.assessment_ID}"> 
 						<i class="fas fa-edit"></i>
 						</a>
 	                        
@@ -128,7 +128,6 @@ async function getAssesmentName() {
 		}
 	
 	async function editQuestion(){
-					
 	    let marks = parseInt(document.getElementById("marks").value);
 	    let question = document.getElementById("question").value;
 	    let optionA = document.getElementById("optionA").value;
@@ -164,5 +163,47 @@ async function getAssesmentName() {
 	    }catch(error){
 	        console.log(error);
 	        alert("Server Error");
+	    }
+	}
+	
+	
+	
+	const assessmentId = Number(params.get("assessmentId"));
+	async function loadQuestion() {
+
+	    try {
+
+	        console.log("qnId =", qnId);
+
+	        let response = await fetch(
+	            `http://localhost:9090/question/questionbyasse/${assessmentId}`
+	        );
+
+	        let data = await response.json();
+
+	        console.log(data);
+
+	        if (data.length === 0) {
+	            alert("No Data Found");
+	            return;
+	        }
+
+	        let question = data[0];
+
+	        console.log(question);
+
+	        alert(question.Marks);
+	        alert(question.Question_Text);
+
+	        document.getElementById("marks").value = question.Marks;
+	        document.getElementById("question").value = question.Question_Text;
+	        document.getElementById("optionA").value = question.Option_A;
+	        document.getElementById("optionB").value = question.Option_B;
+	        document.getElementById("optionC").value = question.Option_C;
+	        document.getElementById("optionD").value = question.Option_D;
+	        document.getElementById("ans").value = question.Correct_Answer;
+
+	    } catch (error) {
+	        console.error(error);
 	    }
 	}

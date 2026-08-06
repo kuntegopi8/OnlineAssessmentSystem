@@ -1,29 +1,27 @@
 package com.online.OnlineRecrutmentSystemBackend.model;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Question {
 
-	private int id;
+    private int id;
     private int assessment_ID;
-    
-    @JsonProperty("Question_Text")
-    private String Question_Text;
-    
-    @JsonProperty("Option_A")
-    private String Option_A;
-    @JsonProperty("Option_B")
-    private String Option_B;
-    @JsonProperty("Option_C")
-    private String Option_C;
-    @JsonProperty("Option_D")
-    private String Option_D;
-    @JsonProperty("Correct_Answer")
-    private String Correct_Answer;
-    @JsonProperty("Marks")
-    private int Marks;
+
+    private String questionText;
+    private String optionA;
+    private String optionB;
+    private String optionC;
+    private String optionD;
+    private String correctAnswer;
+    private int marks;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getAssessment_ID() {
         return assessment_ID;
@@ -33,67 +31,73 @@ public class Question {
         this.assessment_ID = assessment_ID;
     }
 
+    @JsonProperty("Question_Text")
     public String getQuestion_Text() {
-        return Question_Text;
+        return questionText;
     }
 
-    public void setQuestion_Text(String Question_Text) {
-        this.Question_Text= Question_Text;
+    @JsonProperty("Question_Text")
+    public void setQuestion_Text(String questionText) {
+        this.questionText = questionText;
     }
 
+    @JsonProperty("Option_A")
     public String getOption_A() {
-        return Option_A;
+        return optionA;
     }
 
-    public void setOption_A(String option_A) {
-        Option_A = option_A;
+    @JsonProperty("Option_A")
+    public void setOption_A(String optionA) {
+        this.optionA = optionA;
     }
 
+    @JsonProperty("Option_B")
     public String getOption_B() {
-        return Option_B;
+        return optionB;
     }
 
-    public void setOption_B(String option_B) {
-        Option_B = option_B;
+    @JsonProperty("Option_B")
+    public void setOption_B(String optionB) {
+        this.optionB = optionB;
     }
 
+    @JsonProperty("Option_C")
     public String getOption_C() {
-        return Option_C;
+        return optionC;
     }
 
-    public void setOption_C(String option_C) {
-        Option_C = option_C;
+    @JsonProperty("Option_C")
+    public void setOption_C(String optionC) {
+        this.optionC = optionC;
     }
 
+    @JsonProperty("Option_D")
     public String getOption_D() {
-        return Option_D;
+        return optionD;
     }
 
-    public void setOption_D(String option_D) {
-        Option_D = option_D;
+    @JsonProperty("Option_D")
+    public void setOption_D(String optionD) {
+        this.optionD = optionD;
     }
 
+    @JsonProperty("Correct_Answer")
     public String getCorrect_Answer() {
-        return Correct_Answer;
+        return correctAnswer;
     }
 
-    public void setCorrect_Answer(String correct_Answer) {
-        Correct_Answer = correct_Answer;
+    @JsonProperty("Correct_Answer")
+    public void setCorrect_Answer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
+    @JsonProperty("Marks")
     public int getMarks() {
-        return Marks;
+        return marks;
     }
 
+    @JsonProperty("Marks")
     public void setMarks(int marks) {
-        Marks = marks;
+        this.marks = marks;
     }
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 }

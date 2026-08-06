@@ -87,13 +87,10 @@ public class QuestionRepository {
 	{
 		PreparedStatementSetter ps = new PreparedStatementSetter()
 				{
-
 					@Override
 					public void setValues(PreparedStatement ps) throws SQLException {
-						ps.setInt(1, id);
-						
+						ps.setInt(1, id);		
 					}
-			
 				};
 				
 		RowMapper rw = new RowMapper() {
@@ -110,8 +107,6 @@ public class QuestionRepository {
 				q.setMarks(rs.getInt(9));
 				return q;
 			}
-			
-			
 		};
 		List<Question> list = template.query("select * from question where Assessment_ID=?",ps,rw);
 		

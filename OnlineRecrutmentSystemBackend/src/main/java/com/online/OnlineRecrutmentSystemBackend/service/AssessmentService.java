@@ -29,8 +29,13 @@ public class AssessmentService {
    {
 	   return ar.getAllAssessment();
    }
+   public List<Assessment> getAssessmentById(int id)
+   {
+	   return ar.getAssessmentById(id);
+   }
    public Optional<List<Assessment>> getAssessmentBySid(int sid)
    {
 	   return ar.getAssessmentBySid(sid);
    }
+   
 }
