@@ -3,10 +3,8 @@ package com.online.OnlineRecrutmentSystemBackend.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Question {
-
-    private int id;
+	private int id;
     private int assessment_ID;
-
     private String questionText;
     private String optionA;
     private String optionB;
