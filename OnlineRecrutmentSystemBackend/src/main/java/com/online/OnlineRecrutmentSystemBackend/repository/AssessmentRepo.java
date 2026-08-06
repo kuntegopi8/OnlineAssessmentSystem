@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -84,5 +85,33 @@ public class AssessmentRepo {
     	return li;
     }
     
+    public Optional<List<Assessment>> getAssessmentBySid(int sid)
+    {
+    		PreparedStatementSetter ps = new PreparedStatementSetter()
+    				{
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							ps.setInt(1, sid);
+							
+						}
+    			
+    				};
+    		List<Assessment> list = template.query("select * from assessment where Domain=(select interest from users where id = ?)",ps,new RowMapper<Assessment>() {
+
+				@Override
+				public Assessment mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Assessment s = new Assessment();
+					s.setAssessmentName(rs.getString(2));
+					s.setDomain(rs.getString(3));
+					s.setDuration(rs.getInt(4));
+					s.setTotalQuestion(rs.getInt(5));
+					s.setEligibility(rs.getInt(6));
+					
+					return s;
+				}});
+		 return list.isEmpty() ? Optional.empty() : Optional.of(list);
+    		
+    }
 }
 

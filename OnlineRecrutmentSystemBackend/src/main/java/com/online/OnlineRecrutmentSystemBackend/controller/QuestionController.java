@@ -27,7 +27,7 @@ public class QuestionController {
 		@PostMapping("/addquestion")
 		public ResponseEntity<String> addQuestion(@RequestBody Question q)
 		{
-			 
+			
 			boolean b = service.isAddQuestion(q);
 			if(b)
 			{
