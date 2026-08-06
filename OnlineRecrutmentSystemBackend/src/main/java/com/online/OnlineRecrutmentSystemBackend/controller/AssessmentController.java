@@ -20,13 +20,13 @@ import com.online.OnlineRecrutmentSystemBackend.model.Assessment;
 import com.online.OnlineRecrutmentSystemBackend.service.AssessmentService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:7000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/assessment")
 public class AssessmentController {
 	
     @Autowired
     AssessmentService as;
-    @PostMapping("/addAssessment")
+    @PostMapping("/assessment")
     public ResponseEntity<String> isRegisterAssessment(@RequestBody Assessment a)
     {
     	if(as.isRegisterAssessment(a))
@@ -35,15 +35,17 @@ public class AssessmentController {
     	}
     	return new ResponseEntity("Failed to Add Assessment",HttpStatus.BAD_REQUEST);
     }
-    @PutMapping("/updateAssessment/{id}")
-    public ResponseEntity<String> isUpdate(@PathVariable int id,@RequestBody Assessment a)
-    {
+    
+    @PutMapping("/updateAssessment")
+    public ResponseEntity<String> isUpdate(@RequestBody Assessment a)
+    {      int id=0;
     	if(as.isUpdateAssessment(id,a))
     	{
     		return new ResponseEntity("Assessment Updated Successfully",HttpStatus.OK);
     	}
     	return new ResponseEntity("Failed to Update Assessment",HttpStatus.BAD_REQUEST);
     }
+    
     @DeleteMapping("/deleteAssessment/{id}")
     public ResponseEntity<String> isDeleteAssessment(@PathVariable int id)
     {
@@ -53,12 +55,20 @@ public class AssessmentController {
     	}
     	return new ResponseEntity("Failed to Delete Assessment",HttpStatus.BAD_REQUEST);
     }
+    
     @GetMapping("/allAssessment")
     public ResponseEntity<List> getAllAssessment()
     {   List<Assessment> li=as.getAllAssessment();
     	if(li.size()>0)
     	   return new ResponseEntity(li,HttpStatus.OK);
     	return new ResponseEntity(li,HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<List> getAssessmentById(@PathVariable int id)
+    {   List<Assessment> li=as.getAssessmentById(id);
+    	if(li.size()>0)
+    	   return new ResponseEntity(li,HttpStatus.OK);
+    	return new ResponseEntity(li,HttpStatus.BAD_REQUEST);
     }
     
     //get assissment by domain'

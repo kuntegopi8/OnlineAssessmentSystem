@@ -62,6 +62,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	private int userId;
     private String fullName;
     private String email;

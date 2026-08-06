@@ -11,6 +11,7 @@ public class Assessment {
       private int totalQuestion;
       private int totalMarks;
       private int eligibility;
+      private String status;
 	  public int getId() {
 		  return id;
 	  }
@@ -52,6 +53,12 @@ public class Assessment {
 	  }
 	  public void setEligibility(int eligibility) {
 		  this.eligibility = eligibility;
+	  }
+	  public String getStatus() {
+		return status;
+	  }
+	  public void setStatus(String status) {
+		this.status = status;
 	  }
    
 }

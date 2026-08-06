@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="UTF-8">
-<title>Manage Questions</title>
+<title>Update Question</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -16,68 +16,79 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <style>
 
 body{
-	background:#f4f7fc;
-	font-family:Segoe UI,sans-serif;
+    background:#f4f7fc;
+    font-family:'Segoe UI',sans-serif;
 }
 
 .card{
-	border:none;
-	border-radius:12px;
+    border:none;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-.table th{
-	background:#0d6efd;
-	color:white;
+.card-header{
+    background:#0d6efd;
+    color:white;
 }
 
 textarea{
-	resize:none;
+    resize:none;
+}
+
+.btn-update{
+    background:#198754;
+    color:white;
+    font-weight:bold;
+}
+
+.btn-update:hover{
+    background:#157347;
+    color:white;
 }
 
 </style>
 
 </head>
 
-<body onload="getAssesmentName(); loadAllQuestion();">
+<body onload="getAssesmentName(); loadQuestion(); ">
 
-<div class="container mt-5">
+<div class="container mt-4">
 
-<div class="card shadow">
+<div class="card">
 
-<div class="card-header bg-primary text-white">
+<div class="card-header">
 
-<h3>
-<i class="fas fa-question-circle"></i>
-Manage Questions
-</h3>
+<h2>
+
+<i class="fas fa-edit"></i>
+
+Update Question
+
+</h2>
 
 </div>
 
 <div class="card-body">
 
-<form >
+<form onsubmit="event.preventDefault(); editQuestion();">
 
 <div class="row">
 
 <div class="col-md-6 mb-3">
 
-    <label class="form-label">Assessment</label>
+<label class="form-label">Assessment</label>
 
-    <select id="assessmentId" name="assessmentId" class="form-select" required >
-
-        <option value="">Select Assessment</option>
-
-    </select>
-
+<h3>Assessment Name</h3>
 </div>
 
 <div class="col-md-6 mb-3">
 
 <label class="form-label">Marks</label>
 
-<input type="number"
+<input
+type="number"
 id="marks"
-name="marks"
 class="form-control"
 placeholder="Enter Marks"
 required>
@@ -91,10 +102,9 @@ required>
 <label class="form-label">Question</label>
 
 <textarea
-id="quetion"
-name="questionText"
+id="question"
 class="form-control"
-rows="3"
+rows="4"
 placeholder="Enter Question"
 required></textarea>
 
@@ -106,9 +116,9 @@ required></textarea>
 
 <label class="form-label">Option A</label>
 
-<input type="text"
+<input
+type="text"
 id="optionA"
-name="optionA"
 class="form-control"
 placeholder="Option A"
 required>
@@ -119,9 +129,9 @@ required>
 
 <label class="form-label">Option B</label>
 
-<input type="text"
+<input
+type="text"
 id="optionB"
-name="optionB"
 class="form-control"
 placeholder="Option B"
 required>
@@ -132,9 +142,9 @@ required>
 
 <label class="form-label">Option C</label>
 
-<input type="text"
+<input
+type="text"
 id="optionC"
-name="optionC"
 class="form-control"
 placeholder="Option C"
 required>
@@ -145,9 +155,10 @@ required>
 
 <label class="form-label">Option D</label>
 
-<input type="text"
+<input
+
+type="text"
 id="optionD"
-name="optionD"
 class="form-control"
 placeholder="Option D"
 required>
@@ -156,13 +167,12 @@ required>
 
 </div>
 
-<div class="mb-3">
+<div class="mb-4">
 
 <label class="form-label">Correct Answer</label>
 
 <select
 id="ans"
-name="correctAnswer"
 class="form-select"
 required>
 
@@ -182,76 +192,28 @@ required>
 
 <div class="text-end">
 
-<button type="button"
-class="btn btn-success" onclick="addQuetion()">
-
+<button
+type="button"
+class="btn btn-update"
+onclick="editQuestion()">
 <i class="fas fa-save"></i>
-Save Question
-
+Update Question
 </button>
 
-<button type="reset"
+<a href="manage-question.jsp"
 class="btn btn-secondary">
-
-Reset
-
-</button>
+Cancel
+</a>
 
 </div>
 
 </form>
-
+</div>
 </div>
 
 </div>
 
-<!-- Question List -->
-
-<div class="card shadow mt-5">
-
-<div class="card-header bg-dark text-white">
-
-<h4>
-<i class="fas fa-list"></i>
-Question List
-</h4>
-
-</div>
-
-<div class="card-body">
-
-<table class="table table-bordered table-hover text-center">
-
-<thead>
-
-<tr>
-    <th>ID</th>
-    <th>Assessment</th>
-    <th>Question</th>
-    <th>Correct Answer</th>
-    <th>Marks</th>
-    <th>Action</th>
-</tr>
-
-</thead>
-
-
-<tbody id="questionTableBody">
-
-<!-- Data will load from database -->
-
-</tbody>
-
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/Quetion.js"></script>
+
 </body>
 </html>

@@ -23,7 +23,7 @@ public class AssessmentRepo {
     JdbcTemplate template;
     public boolean isRegisterAssessment(Assessment a)
     {
-    	int val=template.update("insert into assessment(name,Domain,Duration,Total_Questions,Total_Marks,Eligibility_Criteria)values(?,?,?,?,?,?)",new PreparedStatementSetter() {
+    	int val=template.update("insert into assessment(name,Domain,Duration,Total_Questions,Total_Marks,Eligibility_Criteria,Status)values(?,?,?,?,?,?,?)",new PreparedStatementSetter() {
     		public void setValues(PreparedStatement ps)throws SQLException
     		{
     			ps.setString(1, a.getAssessmentName());
@@ -32,6 +32,7 @@ public class AssessmentRepo {
     			ps.setInt(4, a.getTotalMarks());
     			ps.setInt(5, a.getTotalMarks());
     			ps.setInt(6, a.getEligibility());
+    			ps.setString(7, a.getStatus());
     		}
     	});
     	
@@ -39,24 +40,26 @@ public class AssessmentRepo {
     }
     public boolean isUpdateAssessment(int id,Assessment a)
     {
-    	int val=template.update("update assessment set name=?,Domain=?,Duration=?,Total_Questions=?,Total_Marks=?,Eligibility_Criteria=? where Assessment_Id=?",new PreparedStatementSetter() {
+    	int val=template.update("update assessment set name=?,Domain=?,Duration=?,Total_Questions=?,Total_Marks=?,Eligibility_Criteria=?,Status=? where id=?",new PreparedStatementSetter() {
     		public void setValues(PreparedStatement ps)throws SQLException
     		{
     			ps.setString(1, a.getAssessmentName());
     			ps.setString(2, a.getDomain());
     			ps.setInt(3, a.getDuration());
-    			ps.setInt(4, a.getTotalMarks());
+    			ps.setInt(4, a.getTotalQuestion());
     			ps.setInt(5, a.getTotalMarks());
     			ps.setInt(6, a.getEligibility());
-    			ps.setInt(7,id);
+    			ps.setString(7, a.getStatus());
+    			ps.setInt(8,a.getId());
     		}
     	});
     	
     	return val>0;
     }
+    
     public boolean isDeleteAssessment(int id)
     {
-    	int val=template.update("delete from assessment where Assessment_Id=?",new PreparedStatementSetter() {
+    	int val=template.update("delete from assessment where id=?",new PreparedStatementSetter() {
     		public void setValues(PreparedStatement ps)throws SQLException
     		{
     			ps.setInt(1,id);
@@ -114,14 +117,35 @@ public class AssessmentRepo {
 		 return list.isEmpty() ? Optional.empty() : Optional.of(list);
     		
     }
-    public Assessment getAssessmentById(int assessmentId) {
+    
+    public List<Assessment> getAssessmentById(int id)
+    {
+    	PreparedStatementSetter ps=new PreparedStatementSetter()
+    			{
+    				public void setValues(PreparedStatement p)throws SQLException
+    				{
+    					p.setInt(1,id);
+    				}
+    			};
+    	List<Assessment> li=template.query("select * from assessment where id=?",ps,new RowMapper() {
+    		public Assessment mapRow(ResultSet rs,int val)throws SQLException
+    		{
+    			Assessment a=new Assessment();
+    			a.setId(rs.getInt(1));
+    			a.setAssessmentName(rs.getString(2));
+    			a.setDomain(rs.getString(3));
+    			a.setDuration(rs.getInt(4));
+    			a.setTotalQuestion(rs.getInt(5));
+    			a.setTotalMarks(rs.getInt(6));
+    			a.setEligibility(rs.getInt(7));
+    			a.setStatus(rs.getString(8));
+    			return a;
+    			
+    		}
+    		
+    	});
+    	return li;
 
-        String sql = "SELECT * FROM assessment WHERE id=?";
-
-        return template.queryForObject(
-                sql,
-                new Object[]{assessmentId},
-                new BeanPropertyRowMapper<>(Assessment.class));
     }
 }
 

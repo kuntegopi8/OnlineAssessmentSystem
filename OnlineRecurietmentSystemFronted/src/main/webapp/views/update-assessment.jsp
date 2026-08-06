@@ -6,9 +6,10 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Manage Assessment</title>
+<title>Update Assessment</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -25,32 +26,34 @@ body{
     border-radius:12px;
 }
 
-.table th{
-    background:#0d6efd;
-    color:white;
-}
-
 </style>
 
 </head>
 
-<body onload="loadAssessments()">
+<body onload="updateLoad()">
 
 <div class="container mt-5">
 
-    <!-- Add Assessment Card -->
     <div class="card shadow">
 
         <div class="card-header bg-primary text-white">
+
             <h3>
-                <i class="fas fa-file-alt"></i>
-                Manage Assessment
+                <i class="fas fa-edit"></i>
+                Update Assessment
             </h3>
+
         </div>
 
         <div class="card-body">
 
             <form>
+
+                <!-- Hidden Assessment ID -->
+                <input
+                    type="hidden"
+                    id="idd"
+                    value="${param.id}">
 
                 <div class="row">
 
@@ -62,7 +65,8 @@ body{
                             type="text"
                             class="form-control"
                             id="assessmentName"
-                            placeholder="Java Programming Assessment">
+                            placeholder="Java Programming Assessment"
+                            required>
 
                     </div>
 
@@ -70,7 +74,10 @@ body{
 
                         <label class="form-label">Domain</label>
 
-                        <select class="form-select" id="domain">
+                        <select
+                            class="form-select"
+                            id="domain"
+                            required>
 
                             <option value="">Select Domain</option>
                             <option value="Java">Java</option>
@@ -90,7 +97,8 @@ body{
                         <input
                             type="number"
                             class="form-control"
-                            id="duration">
+                            id="duration"
+                            required>
 
                     </div>
 
@@ -101,7 +109,8 @@ body{
                         <input
                             type="number"
                             class="form-control"
-                            id="totalQuestion">
+                            id="totalQuestion"
+                            required>
 
                     </div>
 
@@ -112,7 +121,8 @@ body{
                         <input
                             type="number"
                             class="form-control"
-                            id="totalMarks">
+                            id="totalMarks"
+                            required>
 
                     </div>
 
@@ -124,7 +134,8 @@ body{
                             type="number"
                             class="form-control"
                             id="eligibility"
-                            placeholder="60">
+                            placeholder="60"
+                            required>
 
                     </div>
 
@@ -132,8 +143,12 @@ body{
 
                         <label class="form-label">Status</label>
 
-                        <select class="form-select" id="status">
+                        <select
+                            class="form-select"
+                            id="status"
+                            required>
 
+                            <option value="">Select Status</option>
                             <option value="Active">Active</option>
                             <option value="Inactive">Inactive</option>
 
@@ -143,68 +158,29 @@ body{
 
                 </div>
 
-                <div class="text-end">
+                <div class="text-end mt-3">
 
                     <button
                         type="button"
                         class="btn btn-success"
-                        onclick="addAssessment()">
+                        onclick="updateAssessment()">
 
                         <i class="fas fa-save"></i>
-                        Save Assessment
+                        Update Assessment
 
                     </button>
+
+                    <a
+                        href="manage-assessment.jsp"
+                        class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
 
                 </div>
 
             </form>
-
-        </div>
-
-    </div>
-
-    <br>
-
-    <!-- Assessment List -->
-
-    <div class="card shadow">
-
-        <div class="card-header bg-dark text-white">
-
-            <h4>
-                <i class="fas fa-list"></i>
-                Assessment List
-            </h4>
-
-        </div>
-
-        <div class="card-body">
-
-            <table class="table table-bordered table-hover text-center align-middle">
-
-                <thead>
-
-                    <tr>
-
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Domain</th>
-                        <th>Duration</th>
-                        <th>Total Questions</th>
-                        <th>Total Marks</th>
-                        <th>Eligibility</th>
-                        <th>Status</th>
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="assessmentBody">
-
-                </tbody>
-
-            </table>
 
         </div>
 
