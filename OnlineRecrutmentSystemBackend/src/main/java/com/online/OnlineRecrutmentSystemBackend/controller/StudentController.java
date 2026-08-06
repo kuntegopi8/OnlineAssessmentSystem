@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.online.OnlineRecrutmentSystemBackend.model.Student;
+import com.online.OnlineRecrutmentSystemBackend.model.User;
 import com.online.OnlineRecrutmentSystemBackend.service.StudentService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class StudentController {
@@ -36,15 +39,17 @@ public class StudentController {
 		return new ResponseEntity<String>("Required To Register First",HttpStatus.NOT_FOUND);
 	}
 	@PutMapping("/updateProfile/{id}")
-	public ResponseEntity<String> updateProfile(@RequestBody Student s,@PathVariable int id)
+	public ResponseEntity<String> updateProfile(@RequestBody Student s,@PathVariable int id,HttpSession session)
 	{
+		 User user = (User) session.getAttribute("user");
 		if(ss.updateProfile(s, id))
 			return new ResponseEntity("Profile Updated Successfully",HttpStatus.OK);
 		return new ResponseEntity("Problem Occurs,Profile not updated",HttpStatus.BAD_REQUEST);
 	}
 	@GetMapping("/getProfile/{id}")
-	public ResponseEntity<List<Student>> getProfile(@PathVariable int id)
+	public ResponseEntity<List<Student>> getProfile(@PathVariable int id,HttpSession session)
 	{
+		User user = (User) session.getAttribute("user");
 		List<Student> li=ss.getProfile(id);
 		if(li.size()>0)
 		{
@@ -54,8 +59,9 @@ public class StudentController {
 	}
 	
 	@DeleteMapping("/isDeleteProfile/{id}")
-	public ResponseEntity<String> isDeleteProfile(@PathVariable int id)
+	public ResponseEntity<String> isDeleteProfile(@PathVariable int id,HttpSession session)
 	{
+		  User user = (User) session.getAttribute("user");
 		if(ss.isDelete(id))
 			return new ResponseEntity("Profile Deleted Successfully",HttpStatus.OK);
 		return new ResponseEntity("Problem Occurs,Profile not Deleted",HttpStatus.BAD_REQUEST);

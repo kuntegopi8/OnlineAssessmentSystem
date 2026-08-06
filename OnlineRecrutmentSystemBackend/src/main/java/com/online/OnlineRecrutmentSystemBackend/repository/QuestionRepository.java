@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.online.OnlineRecrutmentSystemBackend.model.Question;
+import com.online.OnlineRecrutmentSystemBackend.model.StudentAnswer;
 
 @Repository
 public class QuestionRepository {
@@ -116,6 +117,40 @@ public class QuestionRepository {
 			}});
 		return value>0;
 		
+		
+	}
+	
+	public List<Question> Answer(int assessment_ID)
+	{
+		PreparedStatementSetter ps = new PreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, assessment_ID);
+				
+			}};
+			
+			List<Question> list = template.query("select * from question where  Assessment_ID =?",ps,new RowMapper<Question>() {
+
+				@Override
+				public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Question q = new Question();
+					q.setId(rs.getInt("id"));
+					q.setAssessment_ID(rs.getInt("Assessment_ID"));
+                    q.setQuestion_Text(rs.getString("Question_Text"));
+                    q.setOption_A(rs.getString("Option_A"));
+                    q.setOption_B(rs.getString("Option_B"));
+                    q.setOption_C(rs.getString("Option_C"));
+                    q.setOption_D(rs.getString("Option_D"));
+                    q.setCorrect_Answer(rs.getString("Correct_Answer"));
+                    q.setMarks(rs.getInt("Marks"));
+
+                    return q;
+				}
+				
+				
+			});
+		return list;
 		
 	}
 

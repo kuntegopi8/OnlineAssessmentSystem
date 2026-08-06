@@ -3,8 +3,16 @@ package com.online.OnlineRecrutmentSystemBackend.model;
 import org.springframework.beans.factory.annotation.Value;
 
 public class Question {
+	private int id;
+    public int getId() {
+		return id;
+	}
 
-    private int assessment_ID;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	private int assessment_ID;
     private String Question_Text;
     private String Option_A;
     private String Option_B;
