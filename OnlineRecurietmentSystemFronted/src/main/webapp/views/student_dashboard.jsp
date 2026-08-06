@@ -215,7 +215,7 @@ body {
 							Start assessment based on your selected interest.
 						</p>
 
-						<a href="assessment.jsp"
+						<a href="available_assessment.jsp"
 							class="btn btn-primary btn-custom">
 
 							Start
@@ -238,7 +238,7 @@ body {
 							View your latest assessment score.
 						</p>
 
-						<a href="result.jsp"
+						<a href="assessment_result.jsp"
 							class="btn btn-success btn-custom">
 
 							View
@@ -261,7 +261,7 @@ body {
 							View companies matching your profile.
 						</p>
 
-						<a href="company_list.jsp"
+						<a href="available_company.jsp"
 							class="btn btn-danger btn-custom">
 
 							View
@@ -363,6 +363,6 @@ body {
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+	<script src="../js/login.js"></script>
 </body>
 </html>
