@@ -67,14 +67,14 @@ async function getAssesmentName() {
 	            row.innerHTML = `
 	                <td>${index+1}</td>
 	                <td>${question.assessment_ID}</td>
-	                <td>${question.question_Text}</td>
-	                <td>${question.correct_Answer}</td>
+	                <td>${question.Question_Text}</td>
+	                <td>${question.Correct_Answer}</td>
 	                <td>${question.Marks}</td>
 
 	                <td>
 
 					   <button class="btn btn-warning btn-sm">
-					   <a href="update_Quetion.jsp?id=${question.id}&assessmentId=${question.assessment_ID}"> 
+					   <a href="update_Quetion.jsp?id=${question.id}"> 
 						<i class="fas fa-edit"></i>
 						</a>
 	                        
@@ -94,7 +94,6 @@ async function getAssesmentName() {
 	        console.log(error);
 	    }
 	}
-		
 	async function deleteQuestion(id) {
 	    let confirmDelete = confirm("Are you sure you want to delete this question?");
 	    if (!confirmDelete) {
@@ -171,39 +170,38 @@ async function getAssesmentName() {
 	const assessmentId = Number(params.get("assessmentId"));
 	async function loadQuestion() {
 
-	    try {
+		    try {
 
-	        console.log("qnId =", qnId);
+		        console.log("qnId =", qnId);
+		        let response = await fetch(
+		            `http://localhost:9090/question/questionbyid/${qnId}`
+		        );
 
-	        let response = await fetch(
-	            `http://localhost:9090/question/questionbyasse/${assessmentId}`
-	        );
+		        let data = await response.json();
 
-	        let data = await response.json();
+		        console.log(data);
 
-	        console.log(data);
+		        if (data.length === 0) {
+		            alert("No Data Found");
+		            return;
+		        }
 
-	        if (data.length === 0) {
-	            alert("No Data Found");
-	            return;
-	        }
+		        let question = data[0];
 
-	        let question = data[0];
+		        console.log(question);
+	       
+		        document.getElementById("marks").value = question.Marks;
+		        document.getElementById("question").value = question.Question_Text;
+		        document.getElementById("optionA").value = question.Option_A;
+		        document.getElementById("optionB").value = question.Option_B;
+		        document.getElementById("optionC").value = question.Option_C;
+		        document.getElementById("optionD").value = question.Option_D;
+		        document.getElementById("ans").value = question.Correct_Answer;
 
-	        console.log(question);
-
-	        alert(question.Marks);
-	        alert(question.Question_Text);
-
-	        document.getElementById("marks").value = question.Marks;
-	        document.getElementById("question").value = question.Question_Text;
-	        document.getElementById("optionA").value = question.Option_A;
-	        document.getElementById("optionB").value = question.Option_B;
-	        document.getElementById("optionC").value = question.Option_C;
-	        document.getElementById("optionD").value = question.Option_D;
-	        document.getElementById("ans").value = question.Correct_Answer;
-
-	    } catch (error) {
-	        console.error(error);
-	    }
-	}
+		    } catch (error) {
+		        console.error(error);
+		    }
+		}
+		
+		
+		

@@ -21,10 +21,11 @@ import com.online.OnlineRecrutmentSystemBackend.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
+@CrossOrigin(origins= "*")
 public class StudentController {
 	 @Autowired
      StudentService ss;
-	 @CrossOrigin(origins="*")
+	 
 	@PostMapping("/register")
 	public ResponseEntity<String>isRegister(@RequestBody Student s)
 	{
@@ -48,6 +49,7 @@ public class StudentController {
 			return new ResponseEntity("Profile Updated Successfully",HttpStatus.OK);
 		return new ResponseEntity("Problem Occurs,Profile not updated",HttpStatus.BAD_REQUEST);
 	}
+	
 	@GetMapping("/getProfile/{id}")
 	public ResponseEntity<List<Student>> getProfile(@PathVariable int id,HttpSession session)
 	{
@@ -60,6 +62,7 @@ public class StudentController {
 		return new ResponseEntity(li,HttpStatus.NOT_FOUND);
 	}
 	
+	
 	@DeleteMapping("/isDeleteProfile/{id}")
 	public ResponseEntity<String> isDeleteProfile(@PathVariable int id,HttpSession session)
 	{
@@ -67,6 +70,13 @@ public class StudentController {
 		if(ss.isDelete(id))
 			return new ResponseEntity("Profile Deleted Successfully",HttpStatus.OK);
 		return new ResponseEntity("Problem Occurs,Profile not Deleted",HttpStatus.BAD_REQUEST);
-
 	}
+	
+	@GetMapping("/studentcount")
+	public int gestStudentCount() {
+		System.out.println(ss.studentCount());
+		return ss.studentCount();			
+	}
+	
+	
 }

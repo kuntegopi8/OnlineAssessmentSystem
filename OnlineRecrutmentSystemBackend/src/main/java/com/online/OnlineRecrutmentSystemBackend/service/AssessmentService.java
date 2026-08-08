@@ -37,5 +37,8 @@ public class AssessmentService {
    {
 	   return ar.getAssessmentBySid(sid);
    }
+   public int assessmentCount() {
+	   return ar.assessmentCount();
+   }
    
 }

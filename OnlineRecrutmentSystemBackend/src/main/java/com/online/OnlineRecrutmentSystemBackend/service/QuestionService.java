@@ -35,5 +35,9 @@ public class QuestionService {
 	{
 		return questionRepo.isDelete(id);
 	}
-
+	
+	public List<Question> quetionById(int id){
+		return questionRepo.quetionById(id);
+	}
+	
 }

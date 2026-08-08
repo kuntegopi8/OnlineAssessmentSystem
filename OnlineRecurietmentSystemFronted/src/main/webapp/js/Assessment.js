@@ -181,3 +181,160 @@ function updateAssessment() {
 
     });
 }
+
+
+
+// ======================================================
+// LOAD STUDENT ASSESSMENTS
+// ======================================================
+
+function loadStudentAssessments() {
+
+    const sid = localStorage.getItem("userId");
+
+    console.log("Student ID =", sid);
+
+    if (!sid) {
+        alert("Student ID not found. Please login again.");
+        window.location.href = "userlogin.jsp";
+        return;
+    }
+
+    fetch("http://localhost:9090/assessment/student/" + sid)
+        .then(response => {
+
+            console.log(
+                "Assessment API Status =",
+                response.status
+            );
+
+            if (!response.ok) {
+                throw new Error("No Assessment Found");
+            }
+
+            return response.json();
+        })
+
+        .then(data => {
+
+            console.log("Student Assessments =", data);
+
+            const container =
+                document.getElementById("assessmentContainer");
+
+            if (!data || data.length === 0) {
+                container.innerHTML =
+                    "<h4 class='text-danger text-center'>" +
+                    "No Assessment Available" +
+                    "</h4>";
+                return;
+            }
+
+            let cards = "";
+
+            data.forEach(a => {
+
+                cards += `
+                    <div class="col-lg-4 mb-4">
+
+                        <div class="card shadow-lg border-0 rounded-4 h-100">
+
+                            <div class="card-body text-center">
+
+                                <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
+
+                                <h4>${a.assessmentName}</h4>
+
+                                <hr>
+
+                                <p>
+                                    <b>Domain :</b>
+                                    ${a.domain}
+                                </p>
+
+                                <p>
+                                    <b>Duration :</b>
+                                    ${a.duration} Minutes
+                                </p>
+
+                                <p>
+                                    <b>Total Questions :</b>
+                                    ${a.totalQuestion}
+                                </p>
+
+                                <p>
+                                    <b>Total Marks :</b>
+                                    ${a.totalMarks}
+                                </p>
+
+                                <p>
+                                    <b>Eligibility :</b>
+                                    ${a.eligibility}%
+                                </p>
+
+                                <button
+                                    class="btn btn-success w-100 mt-3"
+                                    onclick="startAssessment(${a.id})">
+
+                                    <i class="fas fa-play-circle"></i>
+                                    Start Assessment
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                `;
+            });
+
+            container.innerHTML = cards;
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Student Assessment Error:",
+                error
+            );
+
+            document.getElementById(
+                "assessmentContainer"
+            ).innerHTML =
+                "<h4 class='text-danger text-center'>" +
+                "No Assessment Available" +
+                "</h4>";
+        });
+}
+
+
+// ======================================================
+// START ASSESSMENT
+// ======================================================
+
+function startAssessment(id) {
+
+    console.log("Clicked Assessment ID =", id);
+
+    if (!id || isNaN(id)) {
+
+        alert("Invalid Assessment ID");
+
+        return;
+    }
+
+    // Store selected assessment
+    localStorage.setItem(
+        "assessmentId",
+        id
+    );
+
+    console.log(
+        "Stored Assessment ID =",
+        localStorage.getItem("assessmentId")
+    );
+
+    // Open exam page
+    window.location.href = "question.jsp";
+}

@@ -32,4 +32,8 @@ public class StudentService {
   {
 	  return sr.isDelete(id);
   }
+  
+  public int studentCount() {
+	  return sr.studentCount();
+  }
 }

@@ -22,7 +22,7 @@ public class RecruitmentDriveRepository {
 	
 	public boolean isAddDrive(RecruitmentDrive d)
 	{
-		int value =template.update("insert into recruitment_drive(Company_ID,Name,Date,Minimum_Score,Status) value(?,?,?,?,?)",new PreparedStatementSetter() {
+		int value =template.update("insert into recruitment_drive(Company_ID,Name,Date,Minimum_Score,Status,Description) value(?,?,?,?,?,?)",new PreparedStatementSetter() {
 
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
@@ -32,6 +32,8 @@ public class RecruitmentDriveRepository {
 				ps.setDate(3,  d.getDate());
 				ps.setInt(4, d.getMinimumScore());
 				ps.setString(5,d.getStatus());
+				ps.setString(6,d.getDescription());
+				
 				
 			}});
 		return value>0;
@@ -41,16 +43,18 @@ public class RecruitmentDriveRepository {
 	
 	public Optional<List<RecruitmentDrive>> getAllDrive()
 	{
-		List<RecruitmentDrive> list = template.query("select * from recruitment_drive",new RowMapper() {
+		List<RecruitmentDrive> list = template.query("select * from recruitment_drive",new RowMapper<>() {
 
 			@Override
 			public RecruitmentDrive mapRow(ResultSet rs, int rowNum) throws SQLException {
 				RecruitmentDrive d = new RecruitmentDrive();
+				d.setId(rs.getInt(1));
 				d.setCompanyId(rs.getInt(2));
 				d.setName(rs.getString(3));
 				d.setDate(rs.getDate(4));
 				d.setMinimumScore(rs.getInt(5));
 				d.setStatus(rs.getString(6));
+				d.setDescription(rs.getString(7));
 				
 		
 				return d;
@@ -67,7 +71,7 @@ public class RecruitmentDriveRepository {
 				ps.setInt(1, id);
 				
 			}};
-		List<RecruitmentDrive> list = template.query("select * from recruitment_drive where id=?",ps,new RowMapper() {
+		List<RecruitmentDrive> list = template.query("select * from recruitment_drive where id=?",ps,new RowMapper<>() {
 			
 
 			@Override
@@ -78,6 +82,7 @@ public class RecruitmentDriveRepository {
 				d.setDate(rs.getDate(4));
 				d.setMinimumScore(rs.getInt(5));
 				d.setStatus(rs.getString(6));
+				d.setDescription(rs.getString(7));
 				
 		
 				return d;
@@ -88,7 +93,7 @@ public class RecruitmentDriveRepository {
 	
 	public boolean isUpdate(int id,RecruitmentDrive rd)
 	{
-		int value =template.update("update recruitment_drive set Name=?,Date=?,Minimum_Score=?,Status=? where id=?;",new PreparedStatementSetter() {
+		int value =template.update("update recruitment_drive set Name=?,Date=?,Minimum_Score=?,Status=?,Description=? where id=?;",new PreparedStatementSetter() {
 
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
@@ -96,7 +101,8 @@ public class RecruitmentDriveRepository {
 				ps.setDate(2, rd.getDate());
 				ps.setInt(3, rd.getMinimumScore());
 				ps.setString(4, rd.getStatus());
-				ps.setInt(5,id);
+				ps.setString(5, rd.getDescription());
+				ps.setInt(6,id);
 			}});
 		return value>0;
 		

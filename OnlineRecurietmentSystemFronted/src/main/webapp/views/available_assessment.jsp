@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,207 +18,99 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <style>
 
 body{
-	background:#f5f7fb;
-	font-family:Segoe UI,sans-serif;
+    background:#f5f7fb;
+    font-family:'Segoe UI',sans-serif;
 }
 
 .navbar{
-	background:linear-gradient(90deg,#0d6efd,#5b8def);
+    background:linear-gradient(90deg,#0d6efd,#5b8def);
 }
 
 .navbar-brand{
-	color:white;
-	font-weight:bold;
-	font-size:25px;
+    color:white !important;
+    font-size:26px;
+    font-weight:bold;
 }
 
 .heading{
-	margin:30px 0;
-	text-align:center;
-	font-weight:bold;
-	color:#0d6efd;
+    margin:35px 0;
+    text-align:center;
+    color:#0d6efd;
+    font-weight:bold;
 }
 
-.card{
-	border:none;
-	border-radius:15px;
-	box-shadow:0 5px 15px rgba(0,0,0,.1);
-	transition:.3s;
+.assessment-card{
+    border:none;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.3s;
+    background:white;
 }
 
-.card:hover{
-	transform:translateY(-5px);
+.assessment-card:hover{
+    transform:translateY(-8px);
 }
 
-.card i{
-	font-size:45px;
-	color:#0d6efd;
+.assessment-card i{
+    font-size:55px;
+    color:#0d6efd;
+}
+
+.assessment-card h4{
+    font-weight:bold;
+    margin-top:15px;
 }
 
 .btn-start{
-	width:100%;
-	font-weight:bold;
+    width:100%;
+    margin-top:15px;
+    border-radius:30px;
+    font-weight:bold;
 }
 
 </style>
 
 </head>
 
-<body>
+<body onload="loadStudentAssessments()">
 
 <nav class="navbar">
 
-<div class="container">
+    <div class="container">
 
-<a class="navbar-brand">
+        <a class="navbar-brand">
 
-<i class="fas fa-book"></i>
+            <i class="fas fa-book"></i>
 
-Online Recruitment System
+            Online Recruitment System
 
-</a>
+        </a>
 
-</div>
+    </div>
 
 </nav>
 
 <div class="container">
 
-<h2 class="heading">
+    <h2 class="heading">
 
-Available Assessments
+        <i class="fas fa-laptop-code"></i>
 
-</h2>
+        Available Assessments
 
-<div class="row g-4" id="assessmentContainer">
+    </h2>
 
-<!-- Assessment Card -->
+    <div class="row" id="assessmentContainer">
 
-<div class="col-md-4">
+        
 
-<div class="card p-4 text-center">
-
-<i class="fas fa-laptop-code"></i>
-
-<h4 class="mt-3">
-
-Java Assessment
-
-</h4>
-
-<p>
-
-Duration : 30 Minutes
-
-</p>
-
-<p>
-
-Questions : 20
-
-</p>
-
-<p>
-
-Total Marks : 40
-
-</p>
-
-<button class="btn btn-primary btn-start">
-
-Start Assessment
-
-</button>
-
-</div>
-
-</div>
-
-<div class="col-md-4">
-
-<div class="card p-4 text-center">
-
-<i class="fas fa-code"></i>
-
-<h4 class="mt-3">
-
-Python Assessment
-
-</h4>
-
-<p>
-
-Duration : 30 Minutes
-
-</p>
-
-<p>
-
-Questions : 20
-
-</p>
-
-<p>
-
-Total Marks : 40
-
-</p>
-
-<button class="btn btn-success btn-start">
-
-Start Assessment
-
-</button>
-
-</div>
-
-</div>
-
-<div class="col-md-4">
-
-<div class="card p-4 text-center">
-
-<i class="fas fa-brain"></i>
-
-<h4 class="mt-3">
-
-Aptitude Assessment
-
-</h4>
-
-<p>
-
-Duration : 25 Minutes
-
-</p>
-
-<p>
-
-Questions : 15
-
-</p>
-
-<p>
-
-Total Marks : 30
-
-</p>
-
-<button class="btn btn-warning btn-start">
-
-Start Assessment
-
-</button>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../js/Assessment.js"></script>
 
 </body>
 </html>

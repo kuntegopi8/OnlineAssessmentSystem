@@ -123,4 +123,18 @@ public class CompanyRepo {
 		
 		
 	}
+	
+	public int companyCount() {
+		List<Integer>li=template.query("select count(*) from company",new RowMapper<Integer>() {
+
+			@Override
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				
+				return rs.getInt(1);
+			}
+		});
+		
+		return li.get(0);
+	}
 }

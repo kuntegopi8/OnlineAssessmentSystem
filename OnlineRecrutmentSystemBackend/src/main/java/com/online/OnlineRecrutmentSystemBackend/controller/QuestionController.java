@@ -39,6 +39,22 @@ public class QuestionController {
 			}
 		}
 		
+		
+		@GetMapping("/questionbyid/{id}")
+		public ResponseEntity<Question>questionById(@PathVariable("id") int id){
+
+			List<Question> list = service.quetionById(id);
+			if(list.size()>0)
+			{
+				return new ResponseEntity(list, HttpStatus.OK);
+			}
+			else
+			{
+					return new ResponseEntity(list, HttpStatus.OK);
+			}	
+		}
+		
+		
 		@PutMapping("/updatequestion/{id}")
 		public ResponseEntity<String> updateQuestion(@RequestBody Question q,@PathVariable int id)
 		{

@@ -70,23 +70,29 @@ public class AssessmentRepo {
     }
     public List<Assessment> getAllAssessment()
     {
-    	List<Assessment> li=template.query("select * from assessment",new RowMapper() {
-    		public Assessment mapRow(ResultSet rs,int val)throws SQLException
-    		{
-    			Assessment a=new Assessment();
-    			a.setId(rs.getInt(1));
-    			a.setAssessmentName(rs.getString(2));
-    			a.setDomain(rs.getString(3));
-    			a.setDuration(rs.getInt(4));
-    			a.setTotalQuestion(rs.getInt(5));
-    			a.setTotalMarks(rs.getInt(6));
-    			a.setEligibility(rs.getInt(7));
-    			return a;
-    			
-    		}
-    		
-    	});
-    	return li;
+        List<Assessment> li = template.query(
+            "SELECT * FROM assessment a WHERE EXISTS (SELECT 1 FROM users u WHERE u.id = 11 AND CONCAT(',', REPLACE(u.interest, ', ', ','), ',') LIKE CONCAT('%,', a.Domain, ',%'))",
+            new RowMapper<Assessment>() {
+                
+                public Assessment mapRow(ResultSet rs, int val) throws SQLException
+                {
+                    Assessment a = new Assessment();
+
+                    a.setId(rs.getInt(1));
+                    a.setAssessmentName(rs.getString(2));
+                    a.setDomain(rs.getString(3));
+                    a.setDuration(rs.getInt(4));
+                    a.setTotalQuestion(rs.getInt(5));
+                    a.setTotalMarks(rs.getInt(6));
+                    a.setEligibility(rs.getInt(7));
+                    a.setStatus(rs.getString(8));
+
+                    return a;
+                }
+            }
+        );
+
+        return li;
     }
     
     public Optional<List<Assessment>> getAssessmentBySid(int sid)
@@ -106,11 +112,13 @@ public class AssessmentRepo {
 				@Override
 				public Assessment mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Assessment s = new Assessment();
+					s.setId(rs.getInt(1));
 					s.setAssessmentName(rs.getString(2));
 					s.setDomain(rs.getString(3));
 					s.setDuration(rs.getInt(4));
 					s.setTotalQuestion(rs.getInt(5));
-					s.setEligibility(rs.getInt(6));
+					s.setEligibility(rs.getInt(7));
+					s.setStatus(rs.getString(8));
 					
 					return s;
 				}});
@@ -145,7 +153,19 @@ public class AssessmentRepo {
     		
     	});
     	return li;
-
     }
+    
+public int assessmentCount() {
+		
+		List<Integer>li=template.query("select count(*)  from assessment",new RowMapper<Integer>() {
+
+			@Override
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getInt(1);
+			}
+		});
+		return li.get(0);
+	}
 }
 

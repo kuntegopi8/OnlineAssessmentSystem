@@ -85,6 +85,11 @@ public class AssessmentController {
     	
     }
   
+    
+    @GetMapping("/assessmentcount")
+    public int getAssessmentCount() {
+    	return as.assessmentCount();
+    }
   
     
 }

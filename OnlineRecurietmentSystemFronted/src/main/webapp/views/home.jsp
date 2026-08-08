@@ -163,22 +163,14 @@ your skills.
 
 <a href="userlogin.jsp"
 class="btn btn-primary btn-lg btn-custom me-3">
-
 <i class="fas fa-sign-in-alt"></i>
-
- Login
-
-</a>
+ Login  </a>
 
 <a href="student_registration.jsp"
 class="btn btn-success btn-lg btn-custom">
-
 <i class="fas fa-user-plus"></i>
-
 Register Now
-
 </a>
-
 </div>
 
 <!-- Right -->

@@ -47,6 +47,7 @@ public class UserRepository {
 			                u.setCollegeName(rs.getString("college_name"));
 			                u.setCgpa(rs.getDouble("cgpa"));
 			                u.setRole(rs.getString("role"));
+			                
 
 			                return u;
 			            }

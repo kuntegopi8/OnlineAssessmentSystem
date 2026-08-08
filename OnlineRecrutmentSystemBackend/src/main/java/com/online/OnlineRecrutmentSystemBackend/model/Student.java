@@ -14,6 +14,7 @@ public class Student {
    private float cgpa;
    private String gender;
    private String interest;
+   
    public String getGender() {
 	return gender;
 }

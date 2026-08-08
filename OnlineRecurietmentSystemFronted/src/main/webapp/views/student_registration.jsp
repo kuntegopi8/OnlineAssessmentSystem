@@ -333,24 +333,40 @@ placeholder="Enter CGPA">
 
 <!-- Interest -->
 
+
+<!-- Interest / Programming Language -->
+
 <div class="col-md-6 mb-3">
 
+    <label class="form-label">
+        Interest
+    </label>
 
-<label class="form-label">
-Interest
-</label>
+    <select class="form-select" id="interest" required>
 
+        <option value="" selected disabled>
+            Select Programming Language
+        </option>
 
-<input
-type="text"
-class="form-control"
-id="interest"
-placeholder="Java, Python, Full Stack">
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="C">C</option>
+        <option value="C++">C++</option>
+        <option value="C#">C#</option>
+        <option value="SQL">SQL</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="ReactJS">ReactJS</option>
+        <option value="NodeJS">NodeJS</option>
+        <option value="Spring Boot">Spring Boot</option>
+        <option value="PHP">PHP</option>
+        <option value="Angular">Angular</option>
+        <option value="Flutter">Flutter</option>
 
+    </select>
 
 </div>
-
-
 
 </div>
 

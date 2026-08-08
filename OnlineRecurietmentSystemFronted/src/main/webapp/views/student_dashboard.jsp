@@ -97,7 +97,7 @@ body {
 
 </head>
 
-<body>
+<body onload="loadStudentProfile()">
 
 <!-- Navbar -->
 
@@ -148,54 +148,46 @@ body {
 	<div class="row mt-4">
 
 		<!-- Profile -->
+<!-- Student Profile -->
+<div class="row mt-4">
 
-		<div class="col-lg-3">
+    <!-- Profile -->
+    <div class="col-lg-3">
 
-			<div class="card profile-card p-4">
+        <div class="card profile-card p-4">
 
-				<h3 class="text-primary">
+            <h3 class="text-primary">
+                <i class="fas fa-user-circle"></i>
+                Student Profile
+            </h3>
 
-					<i class="fas fa-user-circle"></i>
+            <hr>
 
-					Student Profile
+            <div class="mb-3">
+                <strong>Name</strong><br>
+                <span id="name">Loading...</span>
+            </div>
 
-				</h3>
+            <div class="mb-3">
+                <strong>Email</strong><br>
+                <span id="email">Loading...</span>
+            </div>
 
-				<hr>
+            <div class="mb-3">
+                <strong>Qualification</strong><br>
+                <span id="qualification">Loading...</span>
+            </div>
 
-				<p>
-					<b>Name :</b>
+            <div class="mb-3">
+                <strong>CGPA</strong><br>
+                <span id="cgpa">Loading...</span>
+            </div>
 
-					<span id="name">Parth Bhosale</span>
-				</p>
+<a href="profile_page.jsp" class="btn btn-primary w-100"> Update Profile </a>
+        </div>
 
-				<p>
-					<b>Email :</b>
+    </div>
 
-					<span id="email">parth@gmail.com</span>
-				</p>
-
-				<p>
-					<b>Qualification :</b>
-
-					<span id="qualification">B.E Computer Engineering</span>
-				</p>
-
-				<p>
-					<b>CGPA :</b>
-
-					<span id="cgpa">8.40</span>
-				</p>
-
-				<p>
-					<b>Selected Interest :</b>
-
-					<span id="interest">Java Devloper</span>
-				</p>
-
-			</div>
-
-		</div>
 
 		<!-- Dashboard Cards -->
 
@@ -303,66 +295,17 @@ body {
 
 	<!-- Recent Activity -->
 
-	<div class="card table-card mt-4 p-3">
-
-		<h3 class="text-primary">
-
-			<i class="fas fa-history"></i>
-
-			Recent Activity
-
-		</h3>
-
-		<hr>
-
-		<table class="table table-bordered">
-
-			<thead class="table-primary">
-
-				<tr>
-
-					<th>Date</th>
-
-					<th>Activity</th>
-
-					<th>Status</th>
-
-				</tr>
-
-			</thead>
-
-			<tbody>
-
-				<tr>
-
-					<td>01-08-2026</td>
-
-					<td>Java Assessment</td>
-
-					<td class="text-success">Completed</td>
-
-				</tr>
-
-				<tr>
-
-					<td>02-08-2026</td>
-
-					<td>TCS Recruitment Drive</td>
-
-					<td class="text-warning">Applied</td>
-
-				</tr>
-
-			</tbody>
-
-		</table>
-
-	</div>
-
-</div>
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../js/login.js"></script>
+	
+
+<script>
+    window.onload = function () {
+        loadStudentProfile();
+    };
+</script>
+
 </body>
 </html>

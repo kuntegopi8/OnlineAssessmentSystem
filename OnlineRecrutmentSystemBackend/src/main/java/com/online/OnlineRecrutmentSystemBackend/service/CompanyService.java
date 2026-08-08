@@ -39,4 +39,7 @@ public class CompanyService {
 	{
 		return repo.isUpdate(id, c);
 	}
+	public int companyCount() {
+	return repo.companyCount();
+	}
 }

@@ -1,6 +1,8 @@
 package com.online.OnlineRecrutmentSystemBackend.model;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class RecruitmentDrive {
 	/*---------------+--------------+------+-----+---------+----------------+
 | id            | int          | NO   | PRI | NULL    | auto_increment |
@@ -13,9 +15,12 @@ public class RecruitmentDrive {
 	 private int id;
 	    private int companyId;
 	    private String name;
+	    @JsonFormat(pattern = "yyyy-MM-dd")
 	    private Date date;
 	    private int minimumScore;
 	    private String status;
+	    private String description;
+	    
 		public int getId() {
 			return id;
 		}
@@ -51,6 +56,12 @@ public class RecruitmentDrive {
 		}
 		public void setStatus(String status) {
 			this.status = status;
+		}
+		public String getDescription() {
+			return description;
+		}
+		public void setDescription(String description) {
+			this.description = description;
 		}
 
 }

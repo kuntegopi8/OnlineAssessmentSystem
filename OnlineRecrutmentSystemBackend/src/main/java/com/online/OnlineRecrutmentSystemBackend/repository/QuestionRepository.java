@@ -163,5 +163,37 @@ public class QuestionRepository {
 		return list;
 		
 	}
+	
+	
 
-}
+public List<Question> quetionById(int id)
+{
+	PreparedStatementSetter ps = new PreparedStatementSetter()
+			{
+				@Override
+				public void setValues(PreparedStatement ps) throws SQLException {
+					ps.setInt(1, id);		
+				}
+			};
+			
+	RowMapper rw = new RowMapper() {
+
+		@Override
+		public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Question q = new Question();
+			q.setQuestion_Text(rs.getString(3));
+			q.setOption_A(rs.getString(4));
+			q.setOption_B(rs.getString(5));
+			q.setOption_C(rs.getString(6));
+			q.setOption_D(rs.getString(7));
+			q.setCorrect_Answer(rs.getString(8));
+			q.setMarks(rs.getInt(9));
+			return q;
+		}
+	};
+	List<Question> list = template.query("select * from question where id=?",ps,rw);
+	
+	return list;
+	
+  }
+}	

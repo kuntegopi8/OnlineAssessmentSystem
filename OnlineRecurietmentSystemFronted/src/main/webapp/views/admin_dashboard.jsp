@@ -8,10 +8,11 @@
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 
@@ -21,84 +22,55 @@ body{
 }
 
 .sidebar{
-
     height:100vh;
-
     background:#0d6efd;
-
     color:white;
-
     position:fixed;
-
     width:240px;
-
 }
 
 .sidebar h3{
-
     padding:20px;
-
     text-align:center;
-
     border-bottom:1px solid rgba(255,255,255,.2);
-
 }
 
 .sidebar a{
-
     display:block;
-
     color:white;
-
     text-decoration:none;
-
     padding:15px 25px;
-
     transition:.3s;
-
 }
 
 .sidebar a:hover{
-
     background:white;
-
     color:#0d6efd;
-
 }
 
 .content{
-
     margin-left:240px;
-
     padding:30px;
-
 }
 
 .card{
-
     border:none;
-
     border-radius:15px;
-
 }
 
 .card i{
-
     font-size:35px;
-
 }
 
 .navbar{
-
     margin-left:240px;
-
 }
 
 </style>
 
 </head>
 
-<body>
+<body onload="loadDashboardCounts()">
 
 <!-- Sidebar -->
 
@@ -109,7 +81,7 @@ body{
 Admin Panel
 </h3>
 
-<a href="admin-dashboard.jsp">
+<a href="admin_dashboard.jsp">
 <i class="fas fa-home"></i> Dashboard
 </a>
 
@@ -127,10 +99,6 @@ Admin Panel
 
 <a href="manage-drive.jsp">
 <i class="fas fa-calendar"></i> Recruitment Drives
-</a>
-
-<a href="manage-job.jsp">
-<i class="fas fa-briefcase"></i> Jobs
 </a>
 
 <a href="manage-application.jsp">
@@ -175,7 +143,7 @@ Welcome Admin
 
 <i class="fas fa-user-graduate text-primary"></i>
 
-<h3 class="mt-3">120</h3>
+<h3 class="mt-3" id="studentCount">0</h3>
 
 <p>Total Students</p>
 
@@ -189,7 +157,7 @@ Welcome Admin
 
 <i class="fas fa-file-alt text-success"></i>
 
-<h3 class="mt-3">15</h3>
+<h3 class="mt-3" id="assessmentCount">0</h3>
 
 <p>Assessments</p>
 
@@ -203,7 +171,7 @@ Welcome Admin
 
 <i class="fas fa-building text-warning"></i>
 
-<h3 class="mt-3">10</h3>
+<h3 class="mt-3" id="companyCount">0</h3>
 
 <p>Companies</p>
 
@@ -211,19 +179,7 @@ Welcome Admin
 
 </div>
 
-<div class="col-md-3">
 
-<div class="card shadow text-center p-4">
-
-<i class="fas fa-briefcase text-danger"></i>
-
-<h3 class="mt-3">30</h3>
-
-<p>Jobs</p>
-
-</div>
-
-</div>
 
 </div>
 
@@ -262,6 +218,8 @@ Manage Jobs
 </div>
 
 </div>
+
+<script src="../js/AdminDashBoard.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 

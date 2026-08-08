@@ -52,6 +52,7 @@ public class CompanyController {
 		        return ResponseEntity.notFound().build();
 		    }
 		}
+	
 	@GetMapping("/comapanybyid/{id}")
 	public ResponseEntity<List<Company>> companyById(@PathVariable("id") int id)
 	{
@@ -92,5 +93,11 @@ public class CompanyController {
 		}
 		
 	}
+	
+	@GetMapping("countcomp")
+	public int getcomapnycount() {
+		return serv.companyCount();
+	}
+	
 }
 

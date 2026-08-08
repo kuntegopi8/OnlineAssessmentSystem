@@ -55,8 +55,7 @@ public class ResultService {
         result.setScore(score);
 
         // Fetch Assessment
-        Assessment assessment =
-                arepo.getAssessmentById(result.getAssessmentId());
+        Assessment assessment =arepo.getAssessmentById(result.getAssessmentId());
 
         
         if (score >= assessment.getEligibility()) {

@@ -75,6 +75,7 @@ public class StudentRepo {
 				s.setQualification(rs.getString(7));
 				s.setCollege(rs.getString(8));
 				s.setCgpa(rs.getFloat(9));
+				s.setInterest(rs.getString(11));
 				
 				return s;
 			}
@@ -110,5 +111,18 @@ public class StudentRepo {
 		});
 		
 		return val>0;
+	}
+	
+	public int studentCount() {
+		
+		List<Integer>li=template.query("select count(*)  from users where role='student'",new RowMapper<Integer>() {
+
+			@Override
+			public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getInt(1);
+			}
+		});
+		return li.get(0);
 	}
 }
